@@ -22,7 +22,7 @@ def load_jobs_from_db():
             cursor.execute("SELECT * FROM jobs")
             result_all = cursor.fetchall()
 
-        connection.close()  # Always close the connection
+        connection.close() 
 
         # Process results
         jobs = []
