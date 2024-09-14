@@ -39,28 +39,59 @@ def load_jobs_from_db():
 
 
 def load_jobs_from_db_id(id):
-        # Establish the connection
-        connection = pymysql.connect(
-            charset="utf8mb4",
-            connect_timeout=10,
-            cursorclass=pymysql.cursors.DictCursor,
-            db=os.environ['DB_NAME'],
-            host=os.environ['DB_HOST'],
-            password=os.environ['DB_PASSWORD'],
-            read_timeout=10,
-            port=26415,
-            user=os.environ['DB_USER'],
-            write_timeout=10,
-        )
+    # Establish the connection
+    connection = pymysql.connect(
+        charset="utf8mb4",
+        connect_timeout=10,
+        cursorclass=pymysql.cursors.DictCursor,
+        db=os.environ['DB_NAME'],
+        host=os.environ['DB_HOST'],
+        password=os.environ['DB_PASSWORD'],
+        read_timeout=10,
+        port=26415,
+        user=os.environ['DB_USER'],
+        write_timeout=10,
+    )
 
-        with connection.cursor() as cursor:
-            cursor.execute("SELECT * FROM jobs WHERE id = %s", (id, ))
-            rows = cursor.fetchall()
+    with connection.cursor() as cursor:
+        cursor.execute("SELECT * FROM jobs WHERE id = %s", (id, ))
+        rows = cursor.fetchall()
 
-        if len(rows)==0:
-            return None
+    if len(rows) == 0:
+        return None
 
-        else: 
-            return dict(rows[0])
+    else:
+        return dict(rows[0])
 
-        
+
+def add_application_to_db(job_id, application):
+
+    connection = pymysql.connect(
+        charset="utf8mb4",
+        connect_timeout=10,
+        cursorclass=pymysql.cursors.DictCursor,
+        db=os.environ['DB_NAME'],
+        host=os.environ['DB_HOST'],
+        password=os.environ['DB_PASSWORD'],
+        read_timeout=10,
+        port=26415,
+        user=os.environ['DB_USER'],
+        write_timeout=10,
+    )
+
+    with connection.cursor() as cursor:
+        # Define the query using %s as placeholders for MySQL
+        query = """
+            INSERT INTO applications 
+            (job_id, full_name, email, linkedin_url, education, work_experience, resume_url) 
+            VALUES (%s, %s, %s, %s, %s, %s, %s)
+            """
+
+        # Execute the query by passing values from the `application` dictionary
+        cursor.execute(
+            query, (job_id, application['full_name'], application['email'],
+                    application['linkedin_url'], application['education'],
+                    application['work_experience'], application['resume_url']))
+
+        # Commit the transaction to save the data
+        connection.commit()

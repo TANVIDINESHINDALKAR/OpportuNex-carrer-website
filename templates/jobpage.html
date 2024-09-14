@@ -12,7 +12,7 @@
 
     <div class="container">
 
-    <h1 class="text-center mt-2 mb-4">{{company_name}} </h1>
+    <h1 class="text-center mt-2 mb-4">OpportuNex</h1>
 
     <h4>Title</h4>
     <p>{{job.title}}</p>
@@ -36,13 +36,19 @@
       <ol>
 
         {% for line in job.requirements.split("\n")%}
-        <li>{{line}}</li>
+        {% if line.strip() %} <!-- Only include non-empty lines -->
+          <li>{{ line.strip() }}</li>
+        {% endif %}
         {% endfor %}
       </ol>
 
       <h4>Salary</h4>
       <p>{{job.currency}}{{job.salary}}</p>
+
+      {% include 'application_form.html'%}
     </div>
+
+    
 
     {% include 'footer.html' %}
     
