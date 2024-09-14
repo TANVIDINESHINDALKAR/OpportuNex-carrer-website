@@ -2,25 +2,42 @@
 <html>
   <head>
     <title>{{job.title}}</title>
+    {% include 'bootstrap.html'%}
     
   </head>
 
   <body>
+    {% include 'nav.html'%}
+    {% include 'banner.html'%}
 
-    <h3>Title</h3>
+    <div class="container">
+
+    <h1 class="text-center mt-2 mb-4">{{company_name}} </h1>
+
+    <h4>Title</h4>
     <p>{{job.title}}</p>
 
-    <h3>Location</h3>
+    <h4>Location</h4>
     <p>{{job.location}}</p>
 
-    <h3>Salary</h3>
-    <p>{{job.currency}}{{job.salary}}</p>
+   
 
-    <h3>Responsibilities</h3>
+    <h4>Responsibilities</h4>
+      <ul>
+        {% for line in job.responsibilities.split("\n")%}
+        <li>{{line}}</li>
+        {% endfor %}
+      </ul>
     <p>{{job.responsibilities}}</p>
 
-    <h3>Requirements</h3>
+    <h4>Requirements</h4>
     <p>{{job.requirements}}</p>
+
+      <h4>Salary</h4>
+      <p>{{job.currency}}{{job.salary}}</p>
+    </div>
+
+    {% include 'footer.html' %}
     
   </body>
   
