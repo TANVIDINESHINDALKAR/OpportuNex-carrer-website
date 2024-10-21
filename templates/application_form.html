@@ -1,44 +1,89 @@
-<h3 class="text-center my-4">Job Application Form</h3>
-<form action="/job/{{ job['id'] }}/apply" method="POST" class="p-4 border rounded shadow-sm">
-  
-  <!-- Full Name Field -->
-  <div class="mb-3">
-    <label for="full_name" class="form-label">Full Name</label>
-    <input type="text" id="full_name" name="full_name" class="form-control" placeholder="Tanishq Doke" required>
-  </div>
-  
-  <!-- Email Field -->
-  <div class="mb-3">
-    <label for="email" class="form-label">Email</label>
-    <input type="email" id="email" name="email" class="form-control" placeholder="tanishqdoke@gmail.com" required>
-  </div>
-  
-  <!-- LinkedIn URL Field -->
-  <div class="mb-3">
-    <label for="linkedin_url" class="form-label">LinkedIn URL</label>
-    <input type="url" id="linkedin_url" name="linkedin_url" class="form-control" placeholder="https://linkedin.com/in/tanishqdoke">
-  </div>
-  
-  <!-- Education Field -->
-  <div class="mb-3">
-    <label for="education" class="form-label">Education</label>
-    <textarea name="education" id="education" rows="3" class="form-control" placeholder="Enter your education details" required></textarea>
-  </div>
-  
-  <!-- Work Experience Field -->
-  <div class="mb-3">
-    <label for="work_experience" class="form-label">Job Experience</label>
-    <textarea name="work_experience" id="work_experience" rows="3" class="form-control" placeholder="Enter your work experience"></textarea>
-  </div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Application Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
 
-  <!-- Resume URL Field -->
-  <div class="mb-3">
-    <label for="resume_url" class="form-label">Resume URL</label>
-    <input type="url" id="resume_url" name="resume_url" class="form-control" placeholder="Enter your resume link">
-  </div>
-  
-  <!-- Submit Button -->
-  <div class="d-grid">
-    <input type="submit" class="btn btn-primary" value="Apply">
-  </div>
-</form>
+        .form-container {
+            background-color: white;
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            text-align: center;
+            color: #01579b; /* Darker blue for the heading */
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="url"],
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            background-color: #0288d1; /* Primary blue for button */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0277bd; /* Darker blue on hover */
+        }
+    </style>
+</head>
+<body>
+
+<div class="form-container">
+    <h2>Job Application Form</h2>
+    <form action="submit_form.php" method="POST">
+        <label for="fullname">Full Name</label>
+        <input type="text" id="fullname" name="fullname" required>
+
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="linkedin">LinkedIn URL</label>
+        <input type="url" id="linkedin" name="linkedin" required>
+
+        <label for="education">Education</label>
+        <textarea id="education" name="education" rows="4" required></textarea>
+
+        <label for="experience">Job Experience</label>
+        <textarea id="experience" name="experience" rows="4" required></textarea>
+
+        <label for="resume">Resume URL</label>
+        <input type="url" id="resume" name="resume" required>
+
+        <input type="submit" value="Submit">
+    </form>
+</div>
+
+</body>
+</html>
