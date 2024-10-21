@@ -1,35 +1,44 @@
-<h3>Application Form</h3>
-<form action="/job/{{ job['id'] }}/apply" method="POST">
-  <div class="mb-2">
-    <label for="full_name">Full Name</label><br>
-    <input type="text" id="full_name" name="full_name" placeholder="Tanishq Doke" required>
+<h3 class="text-center my-4">Job Application Form</h3>
+<form action="/job/{{ job['id'] }}/apply" method="POST" class="p-4 border rounded shadow-sm">
+  
+  <!-- Full Name Field -->
+  <div class="mb-3">
+    <label for="full_name" class="form-label">Full Name</label>
+    <input type="text" id="full_name" name="full_name" class="form-control" placeholder="Tanishq Doke" required>
+  </div>
+  
+  <!-- Email Field -->
+  <div class="mb-3">
+    <label for="email" class="form-label">Email</label>
+    <input type="email" id="email" name="email" class="form-control" placeholder="tanishqdoke@gmail.com" required>
+  </div>
+  
+  <!-- LinkedIn URL Field -->
+  <div class="mb-3">
+    <label for="linkedin_url" class="form-label">LinkedIn URL</label>
+    <input type="url" id="linkedin_url" name="linkedin_url" class="form-control" placeholder="https://linkedin.com/in/tanishqdoke">
+  </div>
+  
+  <!-- Education Field -->
+  <div class="mb-3">
+    <label for="education" class="form-label">Education</label>
+    <textarea name="education" id="education" rows="3" class="form-control" placeholder="Enter your education details" required></textarea>
+  </div>
+  
+  <!-- Work Experience Field -->
+  <div class="mb-3">
+    <label for="work_experience" class="form-label">Job Experience</label>
+    <textarea name="work_experience" id="work_experience" rows="3" class="form-control" placeholder="Enter your work experience"></textarea>
   </div>
 
-  <div class="mb-2">
-    <label for="email">Email</label><br>
-    <input type="email" id="email" name="email" placeholder="tanishqdoke@gmail.com" required>
+  <!-- Resume URL Field -->
+  <div class="mb-3">
+    <label for="resume_url" class="form-label">Resume URL</label>
+    <input type="url" id="resume_url" name="resume_url" class="form-control" placeholder="Enter your resume link">
   </div>
-
-  <div class="mb-2">
-    <label for="linkedin_url">LinkedIn URL</label><br>
-    <input type="url" id="linkedin_url" name="linkedin_url" placeholder="https://linkedin.com/in/tanishqdoke">
+  
+  <!-- Submit Button -->
+  <div class="d-grid">
+    <input type="submit" class="btn btn-primary" value="Apply">
   </div>
-
-  <div class="mb-2">
-    <label for="Education">Education</label><br>
-    <textarea name="education" required></textarea>
-  </div>
-
-  <div class="mb-2">
-    <label for="Work Experience">Job Experience</label><br>
-    <textarea name="work_experience"></textarea>
-  </div>
-
-
-  <div class="mb-2">
-    <label for="linkedin_url">Resume URL</label><br>
-    <input type="text" id="linkedin_url" name="resume_url">
-  </div>
-
-  <input type="submit" value="Apply">
 </form>
